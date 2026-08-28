@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using TMK.NETCore.Extensions;
 namespace TMK.EnumLib.Tests;
 
@@ -7,7 +6,7 @@ public class ToFlagEnumTests
     [Fact]
     public void ToFlagEnum_ExpectedValuesDays()
     {
-        int[] flagsValue = {2, 4, 12};
+        int[] flagsValue = {2, 4, 8};
         string expected = "Tuesday, Wednesday, Thursday";
         Days flagsEnum = Enums.ToFlagsEnum<Days>(flagsValue);
 
