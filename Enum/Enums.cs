@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace TMK.NETCore.Extensions {
     public static class Enums {
-        private static string[] GetConsoleValues(this Enum value) => 
+        private static string[] GetValuesFromEnum(this Enum value) => 
             value.ToString().Split(',', StringSplitOptions.TrimEntries);
         public static List<string> GetDescriptions<TEnum>(string term, int take = 15) {
             term = (term ?? "").ToUpper();
@@ -23,7 +23,7 @@ namespace TMK.NETCore.Extensions {
         /// Получить описание из атрибута Description
         /// </summary>
         public static string Description(this Enum value) {
-                return string.Join("; ", GetConsoleValues(value)
+                return string.Join("; ", GetValuesFromEnum(value)
                     .Select(a => value.GetType().GetField(a)?
                         .GetCustomAttribute<DescriptionAttribute>()?.Description ?? a)); 
         }
@@ -44,7 +44,7 @@ namespace TMK.NETCore.Extensions {
         /// Получает все перечисленные значения, если перечисление содержит их несколько
         /// </summary>
         public static int[] GetArrayValues(this Enum value) {
-            return GetConsoleValues(value)
+            return GetValuesFromEnum(value)
                 .Select(name => value.GetType().GetField(name))
                 .OfType<FieldInfo>()
                 .Select(field => Convert.ToInt32(field.GetValue(null)))
@@ -58,17 +58,17 @@ namespace TMK.NETCore.Extensions {
             if (!typeof(TEnum).IsDefined(typeof(FlagsAttribute), false)) {
                 throw new ArgumentException($"{typeof(TEnum).Name} не является битовым перечислением");
             }
-            int unknownFlag = Enum.GetValues<TEnum>()
+            int allowedFlag = Enum.GetValues<TEnum>()
                 .Aggregate(0, (current, flag) =>
                     current | Convert.ToInt32(flag));
 
-            if (fields is null || fields.Any(value => (value & ~unknownFlag) != 0))
+            if (fields.Any(value => (value & ~allowedFlag) != 0))
             {
                 throw new ArgumentException("Неизвестный флаг");
             }
 
-            int result = fields?.Aggregate(0, 
-                (current, value) => current | value) ?? 0;
+            int result = fields.Aggregate(0, 
+                (current, value) => current | value);
             return Unsafe.As<int, TEnum>(ref result);
         }
         /// <summary>
@@ -76,7 +76,7 @@ namespace TMK.NETCore.Extensions {
         /// </summary>
         public static string GetStringValues(this Enum value) {
             return string.Join(", ",
-                GetConsoleValues(value)
+                GetValuesFromEnum(value)
                     .Select(name => value.GetType().GetField(name))
                     .OfType<FieldInfo>()
                     .Select(field => Convert.ToInt32(field.GetValue(null))));
