@@ -1,0 +1,14 @@
+/home/cutedarkness/Документы/TestTask1/Enum/bin/Debug/net10.0/Enum
+/home/cutedarkness/Документы/TestTask1/Enum/bin/Debug/net10.0/Enum.deps.json
+/home/cutedarkness/Документы/TestTask1/Enum/bin/Debug/net10.0/Enum.runtimeconfig.json
+/home/cutedarkness/Документы/TestTask1/Enum/bin/Debug/net10.0/Enum.dll
+/home/cutedarkness/Документы/TestTask1/Enum/bin/Debug/net10.0/Enum.pdb
+/home/cutedarkness/Документы/TestTask1/Enum/obj/Debug/net10.0/Enum.GeneratedMSBuildEditorConfig.editorconfig
+/home/cutedarkness/Документы/TestTask1/Enum/obj/Debug/net10.0/Enum.AssemblyInfoInputs.cache
+/home/cutedarkness/Документы/TestTask1/Enum/obj/Debug/net10.0/Enum.AssemblyInfo.cs
+/home/cutedarkness/Документы/TestTask1/Enum/obj/Debug/net10.0/Enum.csproj.CoreCompileInputs.cache
+/home/cutedarkness/Документы/TestTask1/Enum/obj/Debug/net10.0/Enum.dll
+/home/cutedarkness/Документы/TestTask1/Enum/obj/Debug/net10.0/refint/Enum.dll
+/home/cutedarkness/Документы/TestTask1/Enum/obj/Debug/net10.0/Enum.pdb
+/home/cutedarkness/Документы/TestTask1/Enum/obj/Debug/net10.0/Enum.genruntimeconfig.cache
+/home/cutedarkness/Документы/TestTask1/Enum/obj/Debug/net10.0/ref/Enum.dll
