@@ -71,13 +71,17 @@ namespace TMK.NETCore.Extensions {
             if (!typeof(TEnum).IsDefined(typeof(FlagsAttribute), false)) {
                 throw new ArgumentException($"{typeof(TEnum).Name} не является битовым перечислением");
             }
+            int unknownFlag = Enum.GetValues<TEnum>()
+                .Aggregate(0, (current, flag) =>
+                    current | Convert.ToInt32(flag));
 
-            int result = 0;
-            if (fields != null) {
-                foreach (var i in fields) {
-                    result = result | i;
-                }
+            if (fields is null || fields.Any(value => (value & ~unknownFlag) != 0))
+            {
+                throw new ArgumentException("Неизвестный флаг");
             }
+
+            int result = fields?.Aggregate(0, 
+                (current, value) => current | value) ?? 0;
             return Unsafe.As<int, TEnum>(ref result);
         }
         /// <summary>
@@ -153,16 +157,13 @@ namespace TMK.NETCore.Extensions {
         /// <returns></returns>
         public static Dictionary<int, string> GetListParam<TEnum>()
             where TEnum : struct, Enum {
-            Dictionary<int, string> res = new Dictionary<int, string>();
-            foreach (Enum en in Enum.GetValues(typeof(TEnum))) {
-                int key = (int)Enum.Parse(typeof(TEnum), en + "", true);
-                if (key == -1) {
-                    continue;
-                }
-                res.Add(key, en.Description());
-            }
-
-            return res;
+            return Enum.GetValues<TEnum>()
+                .Where(e => Convert.ToInt32(e) != -1)
+                .ToDictionary(
+                    e => Convert.ToInt32(e),
+                    e => e.Description()
+                );
+            
         }
     }
 }

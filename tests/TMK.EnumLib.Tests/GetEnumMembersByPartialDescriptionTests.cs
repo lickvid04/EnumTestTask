@@ -13,8 +13,8 @@ public class GetEnumMemebersByPartialDescriptionTests
     }
 
     [Theory]
-    [InlineData("рпкерыпвп", SubSystemType.AccessControl)]
-    public void GetEnum_InvalidDescriptionsSystem(string descr, SubSystemType expected)
+    [InlineData("рпкерыпвп")]
+    public void GetEnum_InvalidDescriptionsSystem(string descr)
     {
         List<SubSystemType> actual = descr.GetEnumMembersByPartialDescription<SubSystemType>();
 
@@ -31,8 +31,8 @@ public class GetEnumMemebersByPartialDescriptionTests
     }
 
     [Theory]
-    [InlineData("варпаи", Days.Monday)]
-    public void GetEnum_InvalidDescriptionsDays(string descr, Days expected)
+    [InlineData("варпаи")]
+    public void GetEnum_InvalidDescriptionsDays(string descr)
     {
         List<Days> actual = descr.GetEnumMembersByPartialDescription<Days>();
 

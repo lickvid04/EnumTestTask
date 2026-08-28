@@ -8,7 +8,7 @@ public class GetDescriptionsTest
     [InlineData("Пятн", "Пятница")]
     [InlineData("понЕДЕл", "Понедельник")]
     [InlineData("Отсутсвующий", null)]
-    public void GetDescriptions_StringIsCorrect_Days(string term, string expected)
+    public void GetDescriptions_StringIsCorrect_Days(string term, string? expected)
     {
         List<string> descriptions = Enums.GetDescriptions<Days>(term);
         if (expected is null)
@@ -25,7 +25,7 @@ public class GetDescriptionsTest
     [InlineData("Подсис", "Подсистема хранения данных")]
     [InlineData("хран", "Подсистема хранения данных")]
     [InlineData("НеСуществующая", null)]
-    public void GetDescriptions_StringIsCorrect_SubSystemsType(string term, string expected)
+    public void GetDescriptions_StringIsCorrect_SubSystemsType(string term, string? expected)
     {
         List<string> descriptions = Enums.GetDescriptions<SubSystemType>(term);
         if (expected is null)
