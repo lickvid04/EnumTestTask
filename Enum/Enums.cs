@@ -37,7 +37,7 @@ namespace TMK.NETCore.Extensions {
                 return default;
             }
             return Enum.GetValues<TEnum>()
-                .Where(a => Convert.ToInt32(a) == sKey)
+                .Where(enNum => Convert.ToInt32(enNum) == sKey)
                 .FirstOrDefault();
         }
         /// <summary>
@@ -89,9 +89,7 @@ namespace TMK.NETCore.Extensions {
 
             return typeof(TEnum)
                 .GetFields()
-                .Where(field =>
-                    field.Name == descr ||
-                    field.GetCustomAttribute<DescriptionAttribute>()?.Description == descr)
+                .Where(field => field.GetCustomAttribute<DescriptionAttribute>()?.Description == descr)
                 .Select(field => field.GetValue(null))
                 .OfType<TEnum>()
                 .FirstOrDefault();
@@ -135,7 +133,7 @@ namespace TMK.NETCore.Extensions {
         public static Dictionary<int, string> GetListParam<TEnum>()
             where TEnum : struct, Enum {
             return Enum.GetValues<TEnum>()
-                .Where(e => Convert.ToInt32(e) != -1)
+                .Where(e => Convert.ToInt32(e) >= 0)
                 .ToDictionary(
                     e => Convert.ToInt32(e),
                     e => e.Description()

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TMK.EnumLib.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e157f92c9dae857e59f541486e4e27fcf69f6a3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35d8a4cb4d0ca735f8f2ac8980111ec0ff3086dc")]
 [assembly: System.Reflection.AssemblyProductAttribute("TMK.EnumLib.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TMK.EnumLib.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

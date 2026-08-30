@@ -12,6 +12,14 @@ public class DescriptionTests
     }
 
     [Fact]
+    public void DescriptionIsIncorrect_Days()
+    {
+        Days day = Days.Tuesday;
+        string description = day.Description();
+        Assert.NotEqual("Понедельник", description);
+    }
+
+    [Fact]
     public void DescriptionIsCorrect_SubSystemType()
     {
         SubSystemType subSystem = SubSystemType.Storage;
@@ -19,5 +27,11 @@ public class DescriptionTests
         Assert.Equal("Подсистема хранения данных", description);
     }
 
-    
+    [Fact]
+    public void DescriptionIsIncorrect_SubSystemType()
+    {
+        SubSystemType subSystem = SubSystemType.Reference;
+        string description = subSystem.Description();
+        Assert.NotEqual("Подсистема хранения данных", description);
+    }
 }

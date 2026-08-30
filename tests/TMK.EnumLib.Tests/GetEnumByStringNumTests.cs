@@ -14,8 +14,8 @@ public class GetEnumByStringNumTests
     }
 
     [Theory]
-    [InlineData("3")]
-    [InlineData("5")]
+    [InlineData("-3")]
+    [InlineData("-5")]
     public void GetEnumByStringNum_InvalidDaysNumbers(string number)
     {
         Days actual = Enums.GetEnumByStringNum<Days>(number);
